@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Module Selection</ion-title>
+    <ion-buttons slot="end">
+      <ion-button defaultHref="" (click)="goBack()"><ion-icon name="close-outline"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="modal-content">
+    <ion-card *ngFor="let module of availableModules" >
+      <ion-card-content>
+        <ion-card-header><div class="description-toggle" (click)="toggleDescription(module.name)">
+          <ion-icon [name]="descriptionsVisible[module.name] ? 'chevron-up' : 'chevron-down'"></ion-icon>
+        </div>
+        <ion-checkbox [(ngModel)]="selectedModules[module.name]" [checked]="selectedModules[module.name]" (click)="toggleModule(module.name)">{{module.name}}
+        </ion-checkbox>
+      </ion-card-header>
+        <div class="description-container" [id]="'description-' + module.name" [ngClass]="{'open': descriptionsVisible[module.name]}">
+          <p [hidden]="!descriptionsVisible[module.name]">{{ module.description }}</p>
+        </div>
+      </ion-card-content>
+    </ion-card>
+    <ion-button color="dark" (click)="saveSelections()">Save</ion-button>
+    <ion-button color="dark" (click)="clearSelections()" >Clear all</ion-button>
+  </div>
+</ion-content>

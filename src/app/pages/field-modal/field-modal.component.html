@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Add Field
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>Field Name</ion-label>
+    <ion-input [(ngModel)]="fieldName"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Field Type</ion-label>
+    <ion-select [(ngModel)]="selectedFieldType">
+      <ion-select-option value="button">Button</ion-select-option>
+      <ion-select-option value="label">Label</ion-select-option>
+      <ion-select-option value="radio">Radio</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ng-container *ngIf="selectedFieldType === 'radio'">
+    <ion-item>
+      <ion-label>Options</ion-label>
+      <ion-input ></ion-input>
+    </ion-item>
+    <ion-button >Add Option</ion-button>
+  </ng-container>
+
+  <ion-button expand="full" (click)="addFieldModule(fieldName)">Add Field</ion-button>
+</ion-content>

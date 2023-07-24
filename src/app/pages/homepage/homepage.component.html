@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar class="header">
+    <ion-title>Welcome, {{username}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button id="popover-button">
+        Menu
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [ngClass]="{ 'blur-background': isModalOpen }">
+  <div class="container">
+    <h1 class="title">Welcome to the App Builder</h1>
+    <div *ngIf="appData.length > 0">
+      <h2>Existing Apps:</h2>
+      <ion-card *ngFor="let app of appData; let i = index">
+        <ion-card-header>
+          <ion-card-title>{{ app.name }}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-icon [name]="app.icon"></ion-icon>
+          <ion-button color="dark" (click)="proceedToModuleSelection(app.name)">Customize</ion-button>
+          <ion-button color="dark" (click)="deleteApp(i)">Delete</ion-button>
+        </ion-card-content>
+      </ion-card>
+    </div>
+    <ion-button display="block" color="dark" (click)="createNewApp()">Create New App</ion-button>
+  </div>
+</ion-content>
+
+<ion-popover trigger="popover-button" [dismissOnSelect]="true" side="end">
+  <ng-template>
+    <ion-list>
+      <ion-item [button]="true" [detail]="false">About us</ion-item>
+      <ion-item [button]="true" [detail]="false">Contact us</ion-item>
+      <ion-item [button]="true" [detail]="false" (click)="onLogout()">Logout</ion-item>
+    </ion-list>
+  </ng-template>
+</ion-popover>

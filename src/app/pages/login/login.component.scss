@@ -1,0 +1,29 @@
+
+.input-ele {
+  margin-right: 25%;
+  margin-left: 25%;
+  margin-top: 100px;
+  padding: 10px 10px 10px 10px;
+  border-width: 2px;
+}
+
+
+.email-input, .password-input {
+  margin-top: 15px;
+}
+
+
+ion-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+
+.login-content {
+  max-width: 400px;
+  padding: 20px;
+  border-radius: 8px;
+  margin: auto;
+}

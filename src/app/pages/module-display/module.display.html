@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar class="header">
+    <ion-title>Home</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="" (click)="goBack()"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button id="popover-button">
+        Menu
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [ngClass]="{ 'blur-background': isModalOpen }">
+  <div class="container">
+    <h1 class="title">Hi {{ user }},</h1>
+    <p class="description">Please select modules to continue</p>
+    <h3 class="subtitle" *ngIf="selectedModules.length > 0">Selected Modules:</h3>
+    <ion-grid>
+      <ion-row>
+        <ion-col size-xs="12" size-sm="6" size-md="4" size-lg="2" *ngFor="let module of selectedModules">
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title class="module-title">{{ module }}</ion-card-title>
+              <ion-card-subtitle class="module-description"></ion-card-subtitle>
+            </ion-card-header>
+            <ion-button expand="block" color="dark" (click)="openPageEditor(module)">Edit</ion-button>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-button color="dark" (click)="openModuleSelection()">Open Module Selection</ion-button>
+  </div>
+</ion-content>
+
+<ion-popover trigger="popover-button" [dismissOnSelect]="true" side="end">
+  <ng-template>
+    <ion-list>
+      <ion-item [button]="true" [detail]="false">About us</ion-item>
+      <ion-item [button]="true" [detail]="false">Contact us</ion-item>
+      <ion-item [button]="true" [detail]="false" (click)="onLogout()">Logout</ion-item>
+    </ion-list>
+  </ng-template>
+</ion-popover>

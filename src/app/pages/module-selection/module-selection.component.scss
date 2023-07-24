@@ -1,0 +1,35 @@
+.modal-content {
+  max-width: 400px;
+  padding: 20px;
+  border-radius: 8px;
+  margin: auto;
+  display: inline;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+}
+
+.description-container {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.3s ease-in-out;
+}
+
+.description-container.open {
+  max-height: 100%; /* Adjust the maximum height based on your content */
+  transition:max-height 0.3s ease-in-out
+}
+
+.description-toggle {
+  cursor: pointer;
+  margin-top: 8px;
+  margin-right: 3px;
+  display: inline;
+}
+
+.module-title {
+  display: inline-block;
+  margin-left: 8px;
+}

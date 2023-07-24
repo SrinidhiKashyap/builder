@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      <div class="label" (click)="toggleEdit()">
+        <ng-container *ngIf="!isEditable; else editLabel">
+          {{ head }}
+        </ng-container>
+        <ng-template #editLabel>
+          <input type="text" [(ngModel)]="head" (blur)="onHeadChange()">
+        </ng-template>
+      </div>
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="" (click)="goBack()"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button id="popover-button">
+        Menu
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<div class="container">
+  <div *ngFor="let module of selectedModules" class="module-container">
+    <ng-container [ngSwitch]="module.type">
+      <ng-container *ngSwitchCase="'button'">
+        <app-button-module [label]="module.label"></app-button-module>
+      </ng-container>
+      <ng-container *ngSwitchCase="'label'">
+        <app-label-module [(label)]="module.label" (labelChange)="onLabelChange($event)"></app-label-module>
+      </ng-container>
+      <ng-container *ngSwitchCase="'radio'">
+        <app-radio-button  [label]="module.label" [options]="radioOptions" [(selectedValue)]="selectedRadioValue"></app-radio-button>
+      </ng-container>
+    </ng-container>
+  </div>
+</div>
+
+<ion-button (click)="openFieldModal()">Add Field</ion-button>
+
+<ion-popover trigger="popover-button" [dismissOnSelect]="true" side="end">
+  <ng-template>
+    <ion-list>
+      <ion-item [button]="true" [detail]="false">About us</ion-item>
+      <ion-item [button]="true" [detail]="false">Contact us</ion-item>
+      <ion-item [button]="true" [detail]="false" (click)="onLogout()">Logout</ion-item>
+    </ion-list>
+  </ng-template>
+</ion-popover>

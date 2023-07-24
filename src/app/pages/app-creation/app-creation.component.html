@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Create New App</ion-title>
+    <ion-buttons slot="end">
+      <ion-button defaultHref="" (click)="goBack()"><ion-icon name="close-outline"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container">
+    <h1 class="title">Enter App Details</h1>
+    <ion-item>
+      <ion-input required label="App name" labelPlacement="floating" [(ngModel)]="appName"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>App Icon</ion-label>
+      <input type="file" (change)="onFileChange($event)" accept="image/*">
+    </ion-item>
+    <ion-button display="block" color="dark" [disabled]="!appName" (click)="confirmAppCreation()">Create</ion-button>
+    <ion-button display="block" color="dark" (click)="goBack()">Cancel</ion-button>
+  </div>
+</ion-content>

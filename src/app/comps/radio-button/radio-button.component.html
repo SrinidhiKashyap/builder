@@ -1,0 +1,8 @@
+<div class="radio-container">
+  <label class="radio-label">{{ label }}</label>
+  <div class="radio-options">
+    <ion-radio-group [(ngModel)]="selectedValue">
+      <ion-radio *ngFor="let option of options" [value]="option">{{ option }}</ion-radio>
+    </ion-radio-group>
+  </div>
+</div>

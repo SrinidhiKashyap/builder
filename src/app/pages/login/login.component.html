@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+    <ion-progress-bar type="indeterminate"></ion-progress-bar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="login-content">
+    <!-- User login form -->
+    <form #userForm="ngForm">
+      <!-- Email input -->
+      <ion-input required #emailt="ngModel" pattern="^[a-z0-9]+@collins+.[a-z]{2,4}$" labelPlacement="floating"
+        fill="outline" class="email-input" label="Email" type="email" [(ngModel)]="email" name="usermail"></ion-input>
+      <small *ngIf="emailt.invalid && emailt.touched" class="text-error">Enter a valid email</small>
+
+      <!-- Password input -->
+      <ion-input required #passt="ngModel" class="password-input" label="Password" labelPlacement="floating"
+        fill="outline" type="password" [(ngModel)]="pass" name="userpass"></ion-input>
+      <small *ngIf="passt.invalid && passt.touched" class="text-error">Password is required</small><br>
+
+      <!-- Login button -->
+      <ion-button display="block" type="submit" color="dark" (click)="onSubmit()"
+        [disabled]="userForm.form.invalid">Login</ion-button>
+
+      <!-- Login status message -->
+      <p>{{ logintxt }}</p>
+    </form>
+  </div>
+</ion-content>

@@ -1,0 +1,22 @@
+ion-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
+}
+
+.container {
+  max-width: 600px;
+  padding: 20px;
+  border-radius: 8px;
+  margin: auto;
+}
+
+ion-item ,ion-button {
+  margin: 10px;
+}
+
+.blur-background {
+  filter: blur(4px);
+}

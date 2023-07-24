@@ -1,0 +1,8 @@
+<div class="label" (click)="toggleEdit()">
+  <ng-container *ngIf="!isEditable; else editLabel">
+    {{ label }}
+  </ng-container>
+  <ng-template #editLabel>
+    <input type="text" [(ngModel)]="label" (blur)="onLabelChange()">
+  </ng-template>
+</div>
